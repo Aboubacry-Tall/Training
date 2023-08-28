@@ -3,8 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyDDIcDaIVFvVMLcoUmYahtKmUbEGxf_On4',
+    authDomain: 'tesjil-db.firebaseapp.com',
+    projectId: 'tesjil-db',
+    storageBucket: 'tesjil-db.appspot.com',
+    messagingSenderId: '320783723789',
+    appId: '1:320783723789:web:73f250a725ad1c5e189444',
+  },
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
