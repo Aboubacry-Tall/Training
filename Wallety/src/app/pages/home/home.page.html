@@ -59,7 +59,7 @@
           ></ion-input>
 
           <div slot="label" class="pt-2">
-            Birthday <ion-text color="danger"></ion-text>
+            Birthdate <ion-text color="danger"></ion-text>
           </div>
           <ion-datetime-button
             datetime="datetime"
@@ -72,7 +72,7 @@
             <ng-template>
               <ion-datetime
                 id="datetime"
-                [(ngModel)]="user.birthday"
+                [(ngModel)]="user.birthdate"
               ></ion-datetime>
             </ng-template>
           </ion-modal>
