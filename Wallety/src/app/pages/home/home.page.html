@@ -11,6 +11,20 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-content>
+    <ion-list lines="none">
+      <ion-item *ngFor="let user of users; let index" [routerLink]="['/user', user.id]">
+        <ion-avatar slot="start" class="ps-2 pt-1" style="background-color: #c0bbbb;">
+          {{ user.name?.substring(0,2) }}
+        </ion-avatar>
+        <ion-label>{{ user.name }}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button id="openModal">
       <ion-icon name="add"></ion-icon>

@@ -12,6 +12,14 @@ export class UserService {
 
   baseUrl = "https://localhost:7105/api/";
 
+  getUsers() {
+    return this.http.get<any>(`${this.baseUrl}Users`);
+  }
+
+  getUserById(id: number) { 
+    return this.http.get<User>(`${this.baseUrl}Users/`+ id);
+  }
+
   saveUser(user: User) {
     return this.http.post<User>(`${this.baseUrl}Users`, user);
   }
