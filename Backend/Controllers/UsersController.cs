@@ -44,7 +44,8 @@ namespace Backend.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return user;
         }
 
         [HttpPut("{id}")]

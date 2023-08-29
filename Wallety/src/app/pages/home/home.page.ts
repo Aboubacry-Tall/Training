@@ -1,4 +1,7 @@
+
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -8,7 +11,7 @@ import { User } from 'src/app/models/user';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  constructor(private UserService: UserService, private router: Router) { }
 
   user : User = new User();
 
@@ -16,6 +19,15 @@ export class HomePage implements OnInit {
   }
   
   save() {
-    console.log(this.user);
+    // console.log(this.user);
+    this.UserService.saveUser(this.user).subscribe({
+      next: (data) => {
+        this.user = data;
+        console.log(this.user)
+      },
+      error: (err) => {
+        alert(err?.error.message)
+      }
+    });
   }
 }
