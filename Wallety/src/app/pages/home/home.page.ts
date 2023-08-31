@@ -1,8 +1,9 @@
 
+
 import { UserService } from './../../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, IonModal } from '@ionic/angular';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -13,7 +14,9 @@ import { User } from 'src/app/models/user';
 export class HomePage implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { }
-
+  @ViewChild(IonModal) modal!: IonModal;
+  isModalOpen = false;
+  
   user : User = new User();
   users! : User[];
 
@@ -51,5 +54,9 @@ export class HomePage implements OnInit {
         alert(err?.error.message)
       }
     });
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
 }

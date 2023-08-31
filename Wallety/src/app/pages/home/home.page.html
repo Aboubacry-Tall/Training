@@ -26,22 +26,21 @@
   </ion-content>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button id="openModal">
+    <ion-fab-button (click)="setOpen(true)">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-  <ion-modal
-    trigger="openModal"
-    [initialBreakpoint]="0.9"
-    [breakpoints]="[0, 0.5, 1]"
-  >
+  <ion-modal [isOpen]="isModalOpen">
+
     <ng-template class="ion-padding">
-      <!-- <ion-header>
-        <ion-toolbar color="primary">
-          <ion-title> Inline </ion-title>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="setOpen(false)" style="color: black;">Close</ion-button>
+          </ion-buttons>
         </ion-toolbar>
-      </ion-header> -->
+      </ion-header>
       <ion-content>
         <div class="ion-padding">
           <ion-text color="primary">
@@ -49,51 +48,26 @@
           </ion-text>
 
           <div slot="label">Name <ion-text color="danger">*</ion-text></div>
-          <ion-input
-            type="text"
-            [(ngModel)]="user.name"
-            class="px-2"
-            placeholder="Ahmed"
-          ></ion-input>
+          <ion-input type="text" [(ngModel)]="user.name" class="px-2" placeholder="Ahmed"></ion-input>
           <div slot="label">Phone <ion-text color="danger">*</ion-text></div>
-          <ion-input
-            type="tel"
-            [(ngModel)]="user.phone"
-            class="px-2"
-            placeholder="00-00-00-00"
-          ></ion-input>
+          <ion-input type="tel" [(ngModel)]="user.phone" class="px-2" placeholder="00-00-00-00"></ion-input>
           <div slot="label">E-mail <ion-text color="danger">*</ion-text></div>
-          <ion-input
-            type="email"
-            [(ngModel)]="user.email"
-            errorText="Invalid email"
-            ngModel
-            class="px-2"
-            placeholder="xyz@exemple.com"
-          ></ion-input>
+          <ion-input type="email" [(ngModel)]="user.email" errorText="Invalid email" ngModel class="px-2"
+            placeholder="xyz@exemple.com"></ion-input>
 
           <div slot="label" class="pt-2">
             Birthdate <ion-text color="danger"></ion-text>
           </div>
-          <ion-datetime-button
-            datetime="datetime"
-            presentation="datetime"
-            slot="date-target"
-            class="float-start mb-3"
-          ></ion-datetime-button>
+          <ion-datetime-button datetime="datetime" presentation="datetime" slot="date-target"
+            class="float-start mb-3"></ion-datetime-button>
 
           <ion-modal [keepContentsMounted]="true">
             <ng-template>
-              <ion-datetime
-                id="datetime"
-                [(ngModel)]="user.birthdate"
-              ></ion-datetime>
+              <ion-datetime id="datetime" [(ngModel)]="user.birthdate"></ion-datetime>
             </ng-template>
           </ion-modal>
 
-          <ion-button expand="block" class="my-2" (click)="save()"
-            >Save</ion-button
-          >
+          <ion-button expand="block" class="my-2" (click)="save()">Save</ion-button>
         </div>
       </ion-content>
     </ng-template>
